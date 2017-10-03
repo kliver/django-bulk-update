@@ -216,6 +216,9 @@ def bulk_update(objs, meta=None, update_fields=None, exclude_fields=None,
         # unless it is set in ANSI compatibility mode.
         if 'mysql' in vendor:
             sql = sql.replace('"', '`')
+            
+        if 'oracle' in vendor:
+            sql = sql.upper().replace('%S', '%s')
 
         lenpks += n_pks
 
